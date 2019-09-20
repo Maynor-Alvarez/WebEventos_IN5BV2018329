@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CotizacionEditDlg" widgetVar="CotizacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCotizacionTitle}">
+            <h:form id="CotizacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cotizacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCotizacionLabel_idcotizacion}" for="idcotizacion" />
+                        <p:inputText id="idcotizacion" value="#{cotizacionController.selected.idcotizacion}" title="#{bundle.EditCotizacionTitle_idcotizacion}" required="true" requiredMessage="#{bundle.EditCotizacionRequiredMessage_idcotizacion}"/>
+                        <p:outputLabel value="#{bundle.EditCotizacionLabel_detallecotizacionIddetallecotizacion}" for="detallecotizacionIddetallecotizacion" />
+                        <p:selectOneMenu id="detallecotizacionIddetallecotizacion" value="#{cotizacionController.selected.detallecotizacionIddetallecotizacion}" required="true" requiredMessage="#{bundle.EditCotizacionRequiredMessage_detallecotizacionIddetallecotizacion}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{detallecotizacionController.itemsAvailableSelectOne}"
+                                           var="detallecotizacionIddetallecotizacionItem"
+                                           itemValue="#{detallecotizacionIddetallecotizacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCotizacionLabel_reservacionIdreservacion}" for="reservacionIdreservacion" />
+                        <p:selectOneMenu id="reservacionIdreservacion" value="#{cotizacionController.selected.reservacionIdreservacion}" required="true" requiredMessage="#{bundle.EditCotizacionRequiredMessage_reservacionIdreservacion}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{reservacionController.itemsAvailableSelectOne}"
+                                           var="reservacionIdreservacionItem"
+                                           itemValue="#{reservacionIdreservacionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cotizacionController.update}" value="#{bundle.Save}" update="display,:CotizacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CotizacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CotizacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

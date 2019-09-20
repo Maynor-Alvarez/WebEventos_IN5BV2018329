@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetallecotizacionCreateDlg" widgetVar="DetallecotizacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetallecotizacionTitle}">
+            <h:form id="DetallecotizacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detallecotizacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetallecotizacionLabel_iddetallecotizacion}" for="iddetallecotizacion" />
+                        <p:inputText id="iddetallecotizacion" value="#{detallecotizacionController.selected.iddetallecotizacion}" title="#{bundle.CreateDetallecotizacionTitle_iddetallecotizacion}" required="true" requiredMessage="#{bundle.CreateDetallecotizacionRequiredMessage_iddetallecotizacion}"/>
+                        <p:outputLabel value="#{bundle.CreateDetallecotizacionLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{detallecotizacionController.selected.descripcion}" title="#{bundle.CreateDetallecotizacionTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateDetallecotizacionRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreateDetallecotizacionLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{detallecotizacionController.selected.precio}" title="#{bundle.CreateDetallecotizacionTitle_precio}" required="true" requiredMessage="#{bundle.CreateDetallecotizacionRequiredMessage_precio}"/>
+                        <p:outputLabel value="#{bundle.CreateDetallecotizacionLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detallecotizacionController.selected.cantidad}" title="#{bundle.CreateDetallecotizacionTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetallecotizacionRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.CreateDetallecotizacionLabel_productosIdproductos}" for="productosIdproductos" />
+                        <p:selectOneMenu id="productosIdproductos" value="#{detallecotizacionController.selected.productosIdproductos}" required="true" requiredMessage="#{bundle.EditDetallecotizacionRequiredMessage_productosIdproductos}">
+                            <f:selectItems value="#{productosController.itemsAvailableSelectOne}"
+                                           var="productosIdproductosItem"
+                                           itemValue="#{productosIdproductosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detallecotizacionController.create}" value="#{bundle.Save}" update="display,:DetallecotizacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetallecotizacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetallecotizacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

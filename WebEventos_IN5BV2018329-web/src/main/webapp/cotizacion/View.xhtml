@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CotizacionViewDlg" widgetVar="CotizacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCotizacionTitle}">
+            <h:form id="CotizacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cotizacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCotizacionLabel_idcotizacion}"/>
+                        <h:outputText value="#{cotizacionController.selected.idcotizacion}" title="#{bundle.ViewCotizacionTitle_idcotizacion}"/>
+                        <h:outputText value="#{bundle.ViewCotizacionLabel_detallecotizacionIddetallecotizacion}"/>
+                        <h:outputText value="#{cotizacionController.selected.detallecotizacionIddetallecotizacion}" title="#{bundle.ViewCotizacionTitle_detallecotizacionIddetallecotizacion}"/>
+                        <h:outputText value="#{bundle.ViewCotizacionLabel_reservacionIdreservacion}"/>
+                        <h:outputText value="#{cotizacionController.selected.reservacionIdreservacion}" title="#{bundle.ViewCotizacionTitle_reservacionIdreservacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CotizacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

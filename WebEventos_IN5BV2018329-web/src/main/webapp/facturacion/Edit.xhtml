@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacturacionEditDlg" widgetVar="FacturacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFacturacionTitle}">
+            <h:form id="FacturacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facturacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFacturacionLabel_idfacturacion}" for="idfacturacion" />
+                        <p:inputText id="idfacturacion" value="#{facturacionController.selected.idfacturacion}" title="#{bundle.EditFacturacionTitle_idfacturacion}" required="true" requiredMessage="#{bundle.EditFacturacionRequiredMessage_idfacturacion}"/>
+                        <p:outputLabel value="#{bundle.EditFacturacionLabel_cotizacionIdcotizacion}" for="cotizacionIdcotizacion" />
+                        <p:selectOneMenu id="cotizacionIdcotizacion" value="#{facturacionController.selected.cotizacionIdcotizacion}" required="true" requiredMessage="#{bundle.EditFacturacionRequiredMessage_cotizacionIdcotizacion}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cotizacionController.itemsAvailableSelectOne}"
+                                           var="cotizacionIdcotizacionItem"
+                                           itemValue="#{cotizacionIdcotizacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFacturacionLabel_detallefacturaIddetallefactura}" for="detallefacturaIddetallefactura" />
+                        <p:selectOneMenu id="detallefacturaIddetallefactura" value="#{facturacionController.selected.detallefacturaIddetallefactura}" required="true" requiredMessage="#{bundle.EditFacturacionRequiredMessage_detallefacturaIddetallefactura}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{detallefacturaController.itemsAvailableSelectOne}"
+                                           var="detallefacturaIddetallefacturaItem"
+                                           itemValue="#{detallefacturaIddetallefacturaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{facturacionController.update}" value="#{bundle.Save}" update="display,:FacturacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FacturacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FacturacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Reservacion Eventos</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <style>
+            
+            img{
+                position: relative;
+                top: 50px;
+                width: 1500px;
+            }
+            
+            button{
+                position: relative;
+            } 
+            
+            h1{
+                position: relative;
+                top:-620px;
+            }
+          
+            
+        </style>
+    </h:head>
+    <body>
+        <center> 
+        <img src="images/inicio.jpg"></img>
+        </center>
+        <center>
+        <h1>
+            Bienvenido
+        </h1>
+        
+          
+   
+        
+        <p:button outcome="/areas/List" value="Areas" icon="pi pi-star" style="margin-right:20px;">
+        <f:param name="Areas" value="10" />
+        </p:button>
+            
+         <p:button outcome="/clientes/List" value="Clientes" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Clientes" value="10" />
+         </p:button>
+            
+            
+         <p:button outcome="/cotizacion/List" value="Cotizacion" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Cotizacion" value="10" />
+         </p:button>
+       
+        
+         <p:button outcome="/detallecotizacion/List" value="Detalle cotizacion" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Detalle Cotizacion" value="10" />
+         </p:button>
+            
+        <p:button outcome="/detallefactura/List" value="Detalle Factura" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Detalle Factura" value="10" />
+         </p:button>
+        
+         <p:button outcome="/evento/List" value="Evento" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Evento" value="10" />
+         </p:button>
+    
+        <p:button outcome="/facturacion/List" value="Facturacion" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Facturacion" value="10" />
+         </p:button>
+            
+        <p:button outcome="/productos/List" value="Productos" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Productos" value="10" />
+         </p:button>
+      
+       <p:button outcome="/reservacion/List" value="Reservacion" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Reservacion" value="10" />
+         </p:button>
+        
+       <p:button outcome="/sucursal/List" value="sucursal" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Sucursal" value="10" />
+         </p:button>
+        
+        <p:button outcome="/tipoproducto/List" value="Tipo Producto" icon="pi pi-star" style="margin-right:20px;">
+         <f:param name="Tipo Producto" value="10" />
+         </p:button>
+        </center>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
